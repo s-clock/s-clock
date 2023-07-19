@@ -39,6 +39,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: join(__dirname, 'public', 'index.html'),
     }),
+    new MiniCssExtractPlugin(),
   ],
   externals: {
     react: 'React',
