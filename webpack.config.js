@@ -35,6 +35,9 @@ const config = {
     maxEntrypointSize: 5000000,
   },
   devtool: 'source-map',
+  cache: {
+    type: 'filesystem'
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: join(__dirname, 'public', 'index.html'),
