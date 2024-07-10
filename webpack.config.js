@@ -1,6 +1,7 @@
 const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
 
@@ -44,8 +45,20 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: join(__dirname, 'public', 'index.html'),
+      env: {
+        dev,
+        prod: !dev,
+      },
     }),
     new MiniCssExtractPlugin(),
+    new GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: /react.+\.js$/,
+          handler: 'CacheFirst',
+        },
+      ],
+    }),
   ],
   externals: {
     react: 'React',
