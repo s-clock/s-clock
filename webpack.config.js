@@ -2,12 +2,14 @@ const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const dev = process.env.NODE_ENV === 'development';
+
 /**
  * @type {import('webpack').Configuration}
  */
 const config = {
   entry: './src/index.ts',
-  mode: 'production',
+  mode: dev ? 'development' : 'production',
   output: {
     path: join(__dirname, 'dist'),
     filename: '[name].js',
@@ -25,18 +27,19 @@ const config = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.less$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+      },
     ],
-  },
-  optimization: {
-    minimize: false,
   },
   performance: {
     maxAssetSize: 50000000,
     maxEntrypointSize: 5000000,
   },
-  devtool: 'source-map',
+  devtool: dev ? 'source-map' : false,
   cache: {
-    type: 'filesystem'
+    type: 'filesystem',
   },
   plugins: [
     new HtmlWebpackPlugin({

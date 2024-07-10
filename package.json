@@ -1,18 +1,29 @@
 {
-  "name": "webpack-demo",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "s-clock",
+  "version": "0.0.1",
+  "private": true,
   "license": "MIT",
+  "lint-staged": {
+    "*.{js,jsx,.tsx,.ts,.css,.less,.html}": "prettier --write"
+  },
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve",
-    "s": "serve dist"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve",
+    "s": "serve dist",
+    "postinstall": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
+    "husky": "^9.0.11",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "lint-staged": "^15.2.7",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.0.0",
     "serve": "^14.2.1",
