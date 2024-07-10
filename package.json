@@ -4,7 +4,10 @@
   "private": true,
   "license": "MIT",
   "lint-staged": {
-    "*.{js,jsx,.tsx,.ts,.css,.less,.html}": "prettier --write"
+    "*.{js,jsx,.tsx,.ts,.css,.less,.html,.json}": "prettier --write"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
