@@ -1,4 +1,5 @@
-import './sw'
+import './sw';
+
 import { createRoot } from 'react-dom/client';
 import appElem from './App';
 
