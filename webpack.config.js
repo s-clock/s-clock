@@ -42,6 +42,9 @@ const config = {
   cache: {
     type: 'filesystem',
   },
+  optimization: {
+    minimize: false,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: join(__dirname, 'public', 'index.html'),
