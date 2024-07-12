@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "s-clock",
+  "background_color": "#44abe1"
+}

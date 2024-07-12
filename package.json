@@ -22,6 +22,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "copy-webpack-plugin": "^12.0.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",

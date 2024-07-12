@@ -2,8 +2,11 @@ const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const dev = process.env.NODE_ENV === 'development';
+
+const PublicPath = join(__dirname, './public');
 
 /**
  * @type {import('webpack').Configuration}
@@ -54,15 +57,25 @@ const config = {
       },
     }),
     new MiniCssExtractPlugin(),
-    new GenerateSW({
-      runtimeCaching: [
+    dev
+      ? null
+      : new GenerateSW({
+          runtimeCaching: [
+            {
+              urlPattern: /http.+react.+\.js$/,
+              handler: 'CacheFirst',
+            },
+          ],
+        }),
+    new CopyPlugin({
+      patterns: [
         {
-          urlPattern: /react.+\.js$/,
-          handler: 'CacheFirst',
+          from: join(PublicPath, 'manifest.json'),
+          to: join(__dirname, 'dist'),
         },
       ],
     }),
-  ],
+  ].filter((v) => v),
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
