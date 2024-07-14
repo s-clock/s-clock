@@ -17,6 +17,7 @@ const config = {
   output: {
     path: join(__dirname, 'dist'),
     filename: dev ? '[name].js' : '[name].[contenthash].js',
+    clean: true,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
@@ -47,9 +48,6 @@ const config = {
   devtool: dev ? 'source-map' : false,
   cache: {
     type: 'filesystem',
-  },
-  optimization: {
-    minimize: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
