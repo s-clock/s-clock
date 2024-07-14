@@ -8,7 +8,11 @@
     "sourceMap": true,
     "jsx": "react",
     "jsxFactory": "React.createElement",
-    "jsxFragmentFactory": "React.Fragment"
+    "jsxFragmentFactory": "React.Fragment",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }

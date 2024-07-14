@@ -16,10 +16,13 @@ const config = {
   mode: dev ? 'development' : 'production',
   output: {
     path: join(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: dev ? '[name].js' : '[name].[contenthash].js',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      '@': join(__dirname, 'src'),
+    },
   },
   module: {
     rules: [
@@ -65,6 +68,10 @@ const config = {
               urlPattern: /http.+react.+\.js$/,
               handler: 'CacheFirst',
             },
+            {
+              urlPattern: /http.+i18next\.min\.js$/,
+              handler: 'CacheFirst',
+            },
           ],
         }),
     new CopyPlugin({
@@ -73,12 +80,17 @@ const config = {
           from: join(PublicPath, 'manifest.json'),
           to: join(__dirname, 'dist'),
         },
+        {
+          from: join(PublicPath, 'icon.svg'),
+          to: join(__dirname, 'dist'),
+        },
       ],
     }),
   ].filter((v) => v),
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM',
+    i18next: 'i18next',
   },
   devServer: {
     port: 9000,

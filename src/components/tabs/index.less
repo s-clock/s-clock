@@ -1,0 +1,35 @@
+@prefix: ~'tabs';
+
+.@{prefix} {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-title {
+    height: 4rem;
+    flex: 0 0 auto;
+  }
+
+  &-panel {
+    flex: 1 1 auto;
+    position: relative;
+    overflow-x: hidden;
+
+    &-disable {
+      touch-action: none;
+    }
+
+    &-wrapper {
+      position: absolute;
+    }
+
+    &-1 {
+      transform: translateX(100vw);
+    }
+  }
+
+  &-footer {
+    height: 4rem;
+    flex: 0 0 auto;
+  }
+}

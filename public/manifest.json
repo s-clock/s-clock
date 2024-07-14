@@ -1,5 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "s-clock",
-  "background_color": "#44abe1"
+  "background_color": "#ff7171",
+  "display": "standalone",
+  "start_url": ".",
+  "icons": [
+    {
+      "sizes": "any",
+      "src": "./icon.svg"
+    }
+  ]
 }
